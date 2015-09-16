@@ -64,7 +64,6 @@ var mainView = React.createClass({
         this.setState({
           sessions: dataSnapshot.val()
         });
-      // console.log('SESSSSSSSSSSSSSSSSionREF', this.sessionRef.toString())
         console.log('inSession', dataSnapshot.val())
       }.bind(this));
     }

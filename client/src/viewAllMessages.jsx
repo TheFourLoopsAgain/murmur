@@ -25,7 +25,7 @@ var ViewAllMessages = React.createClass({
           votes={ message.votes }
           messageId={ message.messageId }
           timestamp={ message.timestamp }/>
-      )
+      );
     }
 
     // Sort Messages by time or popularity (ie number of votes)

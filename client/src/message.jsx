@@ -36,7 +36,6 @@ var Message = React.createClass({
 
   // Post downvote data to Server
   downVote: function(event){
-
     var messageId = $(event.target).closest('.jumbotron').attr('id');
     $.ajax({
       type: 'POST',
@@ -53,7 +52,6 @@ var Message = React.createClass({
   },
 
   toggleFavorite: function(event){
-
     var messageId = $(event.target).closest('.jumbotron').attr('id');
     $.ajax({
       type: 'POST',
