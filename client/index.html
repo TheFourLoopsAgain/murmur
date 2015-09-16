@@ -119,13 +119,23 @@
       zoom: 1;
       *display: inline;
     }
+
+    #map{
+      height: 50%;
+      margin: 0;
+    }
   </STYLE>
   </head>
   <body>
+    <div id="map"></div>
     <div class="container">
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHRaPTEE2_3-cy2rg7hvGAIzqSY-_j9uw&signed_in=true&callback=initMap"
+        async defer>
+    </script>
     <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
     <script src="main.js"></script>
+    <script src="map.js"></script>
   </body>
 </html>
