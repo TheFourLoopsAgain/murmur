@@ -4,6 +4,10 @@ var React = require('react/addons');
 
 var TestUtils = React.addons.TestUtils;
 
+var inputbox = TestUtils.renderIntoDocument(
+      <Inputbox />
+  );
+
 beforeEach(function(){
   $ = {
     ajax:function(){
@@ -25,17 +29,11 @@ beforeEach(function(){
 describe('inputbox', function(){
   it('should create a composite component and render properly', function(){
 
-  	var inputbox = TestUtils.renderIntoDocument(
-          <Inputbox />
-  		);
     expect(TestUtils.isCompositeComponent(inputbox)).toEqual(true);
   });
   
   it('should make ajax post on enter keystroke', function(){
 
-    var inputbox = TestUtils.renderIntoDocument(
-      <Inputbox />
-      );
     var input = TestUtils.findRenderedDOMComponentWithClass(inputbox, 'form-control');
     var form = TestUtils.findRenderedDOMComponentWithClass(inputbox, 'clearfix');
 
@@ -45,6 +43,16 @@ describe('inputbox', function(){
     TestUtils.Simulate.change(input, {target : {value: 'abc123'}});
     TestUtils.Simulate.submit(form);
     expect(JSON.parse($.ajaxProps.data).message).toEqual('abc123');
+  });
+
+  it('should send lat and long with message', function(){
+
+    localStorage.latitude = 42;
+    localStorage.longitude = 43;
+    var form = TestUtils.findRenderedDOMComponentWithClass(inputbox, 'clearfix');
+    TestUtils.Simulate.submit(form);
+    expect(JSON.parse($.ajaxProps.data).latitude).toEqual(42);
+    expect(JSON.parse($.ajaxProps.data).longitude).toEqual(43);
   });
 
 });
