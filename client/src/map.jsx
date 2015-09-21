@@ -29,12 +29,6 @@ module.exports = React.createClass({
             map.setCenter(marker.getPosition());
 
         });
-        
-        map.addListener('bounds_changed', function(){
-          // console.log('bounds_changed', map.getBounds());
-          var bounds = map.getBounds();
-          this.updateMap(bounds);
-        }.bind(this));
 
         function addInfoWindow(marker, message) {
             var infoWindow = new google.maps.InfoWindow({
@@ -46,7 +40,7 @@ module.exports = React.createClass({
             marker.addListener('mouseout', function () {
                 infoWindow.close(map, marker);
             });
-        }
+        };
 
         for(var i = 0; i < this.props.messages.length; i++){
             var Newmarker = new google.maps.Marker({       
@@ -65,10 +59,6 @@ module.exports = React.createClass({
         else{
             alert("Geolocation is not supported by this browser.");
         }
-    },
-    updateMap: function(bounds){
-        console.log('map update', bounds);
-        // this.props.updateGeoFilter(min, max, j);
     },
     render: function () {
         this.getLocation();

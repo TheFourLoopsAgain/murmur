@@ -113,18 +113,14 @@ var mainView = React.createClass({
   handleSortClosest: function(){
     this.setState({sort: 'closest'});
   },
-  handleSortClosest: function(){
-    this.setState({sort: 'closest'});
-  },
   handleMyPosts: function(){
     this.setState({sort: 'myPosts'});
     this.getMessages();
   },
-  updateGeoFilter:function(){
-
-  },
-  updateGeoFilter:function(){
-
+  updateGeoFilter:function(map){
+    var bounds = map.getBounds();
+    localStorage.northEast = bounds.getNorthEast();
+    localStorage.southWest = bounds.getSouthWest();
   },
 
   styles: {
@@ -177,7 +173,7 @@ var mainView = React.createClass({
           }
         });
         return filtered;
-      }.bind(this),
+      }.bind(this), 
       myPosts: function() {
         console.log(window.sessionStorage.userId);
         var messages = this.state.messages.slice();
@@ -199,7 +195,7 @@ var mainView = React.createClass({
             +(a.latitude-localStorage.latitude)*(a.latitude-localStorage.latitude));
         });
         return messages;
-      }.bind(this),
+      }.bind(this)
     };
 
     return (
