@@ -75,7 +75,6 @@ var mainView = React.createClass({
   },
 
   messagesUpdate: function(message) {
-    
     // this.state.messages.push(
     //   <Message
     //     messageId={ message._id }
@@ -104,9 +103,15 @@ var mainView = React.createClass({
     this.setState({sort: 'favorites'});
     this.getMessages();
   },
+  handleSortClosest: function(){
+    this.setState({sort: 'closest'});
+  },
   handleMyPosts: function(){
     this.setState({sort: 'myPosts'});
     this.getMessages();
+  },
+  updateGeoFilter:function(){
+
   },
 
   styles: {
@@ -167,6 +172,24 @@ var mainView = React.createClass({
           }
         });
         return filtered;
+      }.bind(this),
+      closest:function() {
+        var messages = this.state.messages.slice();
+        messages.sort(function(a,b){
+          return Math.sqrt((b.longitude-localStorage.longitude)*(b.longitude-localStorage.longitude)
+            +(b.latitude-localStorage.latitude)*(b.latitude-localStorage.latitude))
+          -Math.sqrt((a.longitude-localStorage.longitude)*(a.longitude-localStorage.longitude)
+            +(a.latitude-localStorage.latitude)*(a.latitude-localStorage.latitude));
+        });
+        return messages;
+      }.bind(this),
+      myPosts:function(){
+        var messages = this.state.messages.slice();
+        var filtered = messages.filter(function(message){
+          if (message.props.favorites.indexOf(window.sessionStorage.userId) !== -1) {
+            return message;
+          }
+        });
       }.bind(this)
     };
 
@@ -186,6 +209,7 @@ var mainView = React.createClass({
               <button className="btn btn-default" style={{fontFamily: 'Roboto'}} onClick={ this.handleSortPopular }> Hot </button>
               <button className="btn btn-default" style={{fontFamily: 'Roboto'}} onClick={ this.handleFavorites }>Favorites</button>
               <button className="btn btn-default" style={{fontFamily: 'Roboto'}} onClick={ this.handleMyPosts }>My Posts</button>
+              <button className="btn btn-default" style={{fontFamily: 'Roboto'}} onClick={ this.handleSortClosest }>Closest</button>
             </div>
             <InputBox style={this.styles.style} messagesUpdate={this.messagesUpdate} />
           </div>

@@ -151,6 +151,7 @@ app.post('/message', function (request, response) {
 //fetch all messages from the server.
 app.get('/message', function (request, response) {
   message.find({}, function (err, messages) {
+    console.log(messages);
     response.send(JSON.stringify(messages));
   });
 });

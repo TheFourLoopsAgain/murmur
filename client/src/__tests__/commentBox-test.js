@@ -7,8 +7,15 @@ beforeEach(function(){
   $ = {
     ajax:function(){
       this.ajaxProps = arguments[0];
-    },
+    }
   };
+  if(!window){
+    window = {};
+  };
+  if(!window.sessionStorage){
+    window.sessionStorage = {};
+  };
+
 });
 
 describe('commentBox', function(){
@@ -28,11 +35,11 @@ describe('commentBox', function(){
 
     var input = TestUtils.findRenderedDOMComponentWithClass(commentBox, 'form-control');
     var btn = TestUtils.findRenderedDOMComponentWithClass(commentBox, 'btn btn-success');
-    
+    expect(TestUtils.isDOMComponent(btn)).toEqual(true);
     expect(TestUtils.isDOMComponent(input)).toEqual(true);
     TestUtils.Simulate.change(input, {target : {value: 'abc123'}});
     expect(input.getDOMNode().value).toEqual('abc123');
-    TestUtils.Simulate.click(btn);
+    TestUtils.Simulate.submit(btn);
     expect(JSON.parse($.ajaxProps.data).comment).toEqual('abc123');
   });
 
