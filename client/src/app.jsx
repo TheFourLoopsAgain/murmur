@@ -113,9 +113,15 @@ var mainView = React.createClass({
   handleSortClosest: function(){
     this.setState({sort: 'closest'});
   },
+  handleSortClosest: function(){
+    this.setState({sort: 'closest'});
+  },
   handleMyPosts: function(){
     this.setState({sort: 'myPosts'});
     this.getMessages();
+  },
+  updateGeoFilter:function(){
+
   },
   updateGeoFilter:function(){
 
@@ -172,6 +178,7 @@ var mainView = React.createClass({
         });
         return filtered;
       }.bind(this),
+<<<<<<< Updated upstream
       myPosts: function() {
         console.log(window.sessionStorage.userId);
         var messages = this.state.messages.slice();
@@ -184,6 +191,8 @@ var mainView = React.createClass({
         });
         return filtered;
       }.bind(this),
+=======
+>>>>>>> Stashed changes
       closest:function() {
         var messages = this.state.messages.slice();
         messages.sort(function(a,b){
