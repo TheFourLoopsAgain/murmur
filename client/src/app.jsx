@@ -167,7 +167,6 @@ var mainView = React.createClass({
         });
         return filtered;
       }.bind(this),
-<<<<<<< Updated upstream
       myPosts: function() {
         console.log(window.sessionStorage.userId);
         var messages = this.state.messages.slice();
@@ -180,8 +179,6 @@ var mainView = React.createClass({
         });
         return filtered;
       }.bind(this),
-=======
->>>>>>> Stashed changes
       closest:function() {
         var messages = this.state.messages.slice();
         messages.sort(function(a,b){
@@ -192,14 +189,6 @@ var mainView = React.createClass({
         });
         return messages;
       }.bind(this),
-      myPosts:function(){
-        var messages = this.state.messages.slice();
-        var filtered = messages.filter(function(message){
-          if (message.props.favorites.indexOf(window.sessionStorage.userId) !== -1) {
-            return message;
-          }
-        });
-      }.bind(this)
     };
 
 
