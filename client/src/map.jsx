@@ -11,6 +11,7 @@ module.exports = React.createClass({
                 zoom: 20
             },
             map = new google.maps.Map(this.getDOMNode(), mapOptions);
+        
 
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude), 
@@ -26,6 +27,7 @@ module.exports = React.createClass({
         map.addListener('click', function(){
             map.setZoom(20);
             map.setCenter(marker.getPosition());
+
         });
 
         function addInfoWindow(marker, message) {
@@ -38,7 +40,7 @@ module.exports = React.createClass({
             marker.addListener('mouseout', function () {
                 infoWindow.close(map, marker);
             });
-        }
+        };
 
         for(var i = 0; i < this.props.messages.length; i++){
             var Newmarker = new google.maps.Marker({       
