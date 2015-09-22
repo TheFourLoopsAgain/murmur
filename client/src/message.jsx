@@ -69,7 +69,7 @@ var Message = React.createClass({
     var voteLoc = upVotes.indexOf(window.sessionStorage.userId);
     if (voteLoc !== -1){
       upVotes.splice(voteLoc, 1);
-      var newTotal = totalVotes - 1;
+      var newTotal = totalVotes + 1;
     }
     else {
       upVotes.push(window.sessionStorage.userId);
