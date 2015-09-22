@@ -15,7 +15,7 @@ TopBar = React.createClass({
         <div className="container">
           <div className="navbar-header" style={{'float': 'left', 'padding': '15px', 'textAlign': 'center', 'width': '100%' }}>
             <div data-toggle="modal" data-target="#myModal" style={{'float':'left', 'color':'white', 'cursor':'pointer'}}>Login/Signup</div>
-            <a href="" className="navbar-brand" style={{'fontFamily': 'Sarina', 'color': 'white', 'float': 'none' }}> ChattyMcChatChat</a>
+            <a href="" className="navbar-brand" style={{'fontFamily': 'Copperplate Gothic Light', 'color': 'white', 'float': 'none' }}> GeoChat</a>
               <span id='username' onClick={this.signOut} style={{'float':'right', 'color':'white', 'cursor':'pointer', 'font-size': '16px', "margin-left":"20px"}}>Logout</span>
               <span id='username' style={{'float':'right', 'color':'white', 'cursor':'pointer', 'font-size': '16px'}}>{this.props.username}</span>
               
