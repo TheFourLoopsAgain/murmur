@@ -92,7 +92,8 @@ var LoginSignupModal = React.createClass({
           window.sessionStorage.hairId = data.hairId;
           window.sessionStorage.faceId = data.faceId;
           this.props.loadUser(); //reload the username on the homepage.
-
+          $('#usernameLogin').val('');
+          $('#passwordLogin').val('');
         }
       }.bind(this)
     });
@@ -120,6 +121,8 @@ var LoginSignupModal = React.createClass({
           window.sessionStorage.userId = data._id;
           window.sessionStorage.hairId = data.hairId;
           window.sessionStorage.faceId = data.faceId;
+          $('#usernameSignup').val('');
+          $('#passwordSignup').val('');
           $('#myModal').modal('hide');
           this.props.loadUser();
         }
